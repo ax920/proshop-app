@@ -8,7 +8,10 @@ import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { DashboardModule } from './dashboard/dashboard.module';
 import { ItemsModule } from './items/items.module';
+import { InventoryModule } from './inventory/inventory.module';
+import { SalesModule } from './sales/sales.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { ItemsModule } from './items/items.module';
     BrowserAnimationsModule,
     MatSidenavModule,
     MatListModule,
-    ItemsModule
+    DashboardModule,
+    ItemsModule,
+    InventoryModule,
+    SalesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

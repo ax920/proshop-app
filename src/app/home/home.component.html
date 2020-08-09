@@ -8,7 +8,11 @@
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content [ngSwitch]="_router.url">
-        <app-items *ngSwitchCase="homeUrl"></app-items>
+        <app-dashboard *ngSwitchCase="dashboardUrl"></app-dashboard>
+        <app-items *ngSwitchCase="itemsUrl"></app-items>
+        <app-inventory *ngSwitchCase="inventoryUrl"></app-inventory>
+        <app-sales *ngSwitchCase="salesUrl"></app-sales>
+
         <p *ngSwitchCase="homeUrl">well</p>
 
 
