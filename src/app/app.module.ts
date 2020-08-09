@@ -8,14 +8,12 @@ import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { ItemsComponent } from './items/items.component';
-
+import { ItemsModule } from './items/items.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ItemsComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +21,8 @@ import { ItemsComponent } from './items/items.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    ItemsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

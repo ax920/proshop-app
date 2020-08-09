@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
 
   dashboardUrl: string = '/dashboard';
   itemsUrl: string = '/items';
-  inventoryUrl: string = '/i;nventory';
+  inventoryUrl: string = '/inventory';
   salesUrl: string = '/sales';
   homeUrl: string = '/'; // temporary for testing
 
