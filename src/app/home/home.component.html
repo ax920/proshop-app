@@ -1,0 +1,21 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav mode="side" opened>
+        <mat-nav-list>
+            <a mat-list-item [routerLink]="'/dashboard'"> Dashboard </a>
+            <a mat-list-item [routerLink]="'/items'"> Items </a>
+            <a mat-list-item [routerLink]="'/inventory'"> Inventory </a>
+            <a mat-list-item [routerLink]="'/sales'"> Sales </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content [ngSwitch]="_router.url">
+        <app-items *ngSwitchCase="homeUrl"></app-items>
+        <p *ngSwitchCase="homeUrl">well</p>
+
+
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- <button mat-button>Dashboard</button>
+<button mat-button>Items</button>
+<button mat-button>Inventory</button>
+<button mat-button>Sales</button> -->
