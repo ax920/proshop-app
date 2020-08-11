@@ -9,11 +9,11 @@ import { RouterModule, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  homeUrl: string = '/';
   dashboardUrl: string = '/dashboard';
   itemsUrl: string = '/items';
   inventoryUrl: string = '/inventory';
   salesUrl: string = '/sales';
-  homeUrl: string = '/'; // temporary for testing
 
   constructor(public _router: Router) { }
 
