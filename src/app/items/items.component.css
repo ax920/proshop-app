@@ -12,3 +12,12 @@
     flex: 0 1 5%;
 }
 
+.above-table-button {
+    margin: 1vw;
+    width: 75px !important;
+}
+
+.action-button-divider {
+    width: 0.5vw;
+    height: auto;
+}

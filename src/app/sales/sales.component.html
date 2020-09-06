@@ -1,1 +1,55 @@
-<p>sales works!</p>
+<mat-progress-bar *ngIf="!isDataAvailable" mode="indeterminate"></mat-progress-bar>
+<div *ngIf="isDataAvailable">
+    <mat-table [dataSource]="allSales" class="mat-elevation-z8">
+        <!-- id Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> Sale id </mat-header-cell>
+            <mat-cell *matCellDef="let sale"> {{sale.id}} </mat-cell>
+        </ng-container>
+
+        <!-- Item id Column -->
+        <ng-container matColumnDef="item_id">
+            <mat-header-cell *matHeaderCellDef> Item id </mat-header-cell>
+            <mat-cell *matCellDef="let sale"> {{sale.item_id}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let sale"> {{sale.name}} </mat-cell>
+        </ng-container>
+
+        <!-- Buy Price Column -->
+        <ng-container matColumnDef="buy_price">
+            <mat-header-cell *matHeaderCellDef> Buy Price </mat-header-cell>
+            <mat-cell *matCellDef="let sale"> {{sale.buy_price}} </mat-cell>
+        </ng-container>
+
+        <!-- Sell Price Column -->
+        <ng-container matColumnDef="sell_price">
+            <mat-header-cell *matHeaderCellDef> Sell Price </mat-header-cell>
+            <mat-cell *matCellDef="let sale"> {{sale.sell_price}} </mat-cell>
+        </ng-container>
+
+        <!-- Quantity Column -->
+        <ng-container matColumnDef="quantity">
+            <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+            <mat-cell *matCellDef="let sale"> {{sale.quantity}} </mat-cell>
+        </ng-container>
+
+        <!-- Category Column -->
+        <ng-container matColumnDef="category">
+            <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+            <mat-cell *matCellDef="let sale"> {{sale.category}} </mat-cell>
+        </ng-container>
+
+        <!-- Total Column -->
+        <ng-container matColumnDef="total">
+            <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
+            <mat-cell *matCellDef="let sale"> {{sale.total}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>

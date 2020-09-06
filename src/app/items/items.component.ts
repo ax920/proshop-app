@@ -9,7 +9,7 @@ import { ItemsService } from './items.service';
 export class ItemsComponent implements OnInit {
 
   allItems: any[];
-  displayedColumns: string[] = ['id', 'name', 'buy_price', 'sell_price', 'category', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'buy_price', 'sell_price', 'quantity', 'category', 'actions'];
   isDataAvailable: boolean = false;
 
   constructor(public itemsService: ItemsService) { }
@@ -20,5 +20,17 @@ export class ItemsComponent implements OnInit {
       this.isDataAvailable = true;
       console.log(this.allItems);
     });
+  }
+
+  openAddItemDialog(): void {
+    // const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    //   width: '250px',
+    //   data: {name: this.name, animal: this.animal}
+    // });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    //   this.animal = result;
+    // });
   }
 }
