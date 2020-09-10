@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ItemsService } from './items.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogData } from '../models/dialog-data';
 
 @Component({
   selector: 'app-items',
@@ -12,7 +14,7 @@ export class ItemsComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'buy_price', 'sell_price', 'quantity', 'category', 'actions'];
   isDataAvailable: boolean = false;
 
-  constructor(public itemsService: ItemsService) { }
+  constructor(public itemsService: ItemsService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.itemsService.getItems().subscribe(items => {
@@ -23,14 +25,38 @@ export class ItemsComponent implements OnInit {
   }
 
   openAddItemDialog(): void {
-    // const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-    //   width: '250px',
-    //   data: {name: this.name, animal: this.animal}
-    // });
+    const dialogRef = this.dialog.open(AddItemDialog, {
+      width: '250px',
+      data: { name: '', buy_price: '', sell_price: '', quantity: '', category: '' }
+    });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    //   this.animal = result;
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(this.allItems[0])
+      const item: DialogData = result;
+      console.log("item", item);
+
+      // Update the DB
+
+      this.itemsService.addItem(item).subscribe(res => console.log(res));
+
+      // Update the table
+      // this.allItems.push(result);
+
+    });
+  }
+}
+
+@Component({
+  selector: 'add-item-dialog',
+  templateUrl: 'add-item-dialog.html',
+})
+export class AddItemDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<AddItemDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

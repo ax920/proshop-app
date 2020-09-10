@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Add Item</h1>
+<div mat-dialog-content>
+    <p>What's your favorite animal?</p>
+    <mat-form-field>
+        <mat-label>Item Name</mat-label>
+        <input matInput [(ngModel)]="data.name">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Buy Price</mat-label>
+        <input matInput [(ngModel)]="data.buy_price">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Sell Price</mat-label>
+        <input matInput [(ngModel)]="data.sell_price">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Quantity</mat-label>
+        <input matInput [(ngModel)]="data.quantity">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Category</mat-label> <!-- Should make into a dropdown menu -->
+        <input matInput [(ngModel)]="data.category">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <!-- <button mat-button (click)="save()">Ok</button> -->
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

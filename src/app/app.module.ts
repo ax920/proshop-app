@@ -12,11 +12,17 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { ItemsModule } from './items/items.module';
 import { InventoryModule } from './inventory/inventory.module';
 import { SalesModule } from './sales/sales.module';
+import { AddItemDialog } from './items/items.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    AddItemDialog,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +34,11 @@ import { SalesModule } from './sales/sales.module';
     DashboardModule,
     ItemsModule,
     InventoryModule,
-    SalesModule
+    SalesModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
