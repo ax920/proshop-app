@@ -10,6 +10,7 @@ import { EditItemDialogComponent } from './edit-item-dialog/edit-item-dialog.com
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [ItemsComponent, EditItemDialogComponent],
@@ -22,7 +23,8 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     FormsModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatSortModule
   ],
   exports: [
     ItemsComponent

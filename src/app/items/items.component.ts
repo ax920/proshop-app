@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ItemsService } from './items.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogData } from '../models/dialog-data';
+import { Item } from '../models/item';
 import { EditItemDialogComponent } from './edit-item-dialog/edit-item-dialog.component';
 
 @Component({
@@ -45,31 +46,28 @@ export class ItemsComponent implements OnInit {
     });
   }
 
-  openEditItemDialog(): void {
-    const dialogRef = this.dialog.open(EditItemDialogComponent, {
-      width: '250px',
-      data: { name: '', buy_price: '', sell_price: '', quantity: '', category: '' }
+  openEditItemDialog(id: number): void {
+    this.itemsService.getItemById(id).subscribe(res => {
+      const currentItemInfo: Item = res;
+      const dialogRef = this.dialog.open(EditItemDialogComponent, {
+        width: '250px',
+        data:
+        {
+          name: currentItemInfo.name,
+          buy_price: currentItemInfo.buy_price,
+          sell_price: currentItemInfo.sell_price,
+          quantity: currentItemInfo.quantity,
+          category: currentItemInfo.category
+        }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        const item: DialogData = result;
+        this.itemsService.updateItem(id, item).subscribe(res => {
+          this.refresh();
+        });
+      });
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      const item: DialogData = result;
-      console.log(item);
-    });
-  }
-}
-
-@Component({
-  selector: 'edit-item-dialog',
-  templateUrl: 'edit-item-dialog.html',
-})
-export class EditItemDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<EditItemDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
-
-  onNoClick(): void {
-    this.dialogRef.close();
   }
 }
 
