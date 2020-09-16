@@ -20,14 +20,22 @@ export class ItemsComponent implements OnInit {
 
   ngOnInit(): void {
     this.itemsService.getItems().subscribe(items => {
-      this.allItems = items;
+      this.allItems = items.sort(function (a, b) {
+        return a.id - b.id || a.name.localeCompare(b.name);
+      });
       this.isDataAvailable = true;
     });
   }
 
+  ngAfterViewInit() {
+
+  }
+
   refresh() {
     this.itemsService.getItems().subscribe(items => {
-      this.allItems = items;
+      this.allItems = items.sort(function (a, b) {
+        return a.id - b.id || a.name.localeCompare(b.name);
+      });;
       this.isDataAvailable = true;
     });
   }
