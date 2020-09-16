@@ -20,7 +20,13 @@ export class ItemsComponent implements OnInit {
     this.itemsService.getItems().subscribe(items => {
       this.allItems = items;
       this.isDataAvailable = true;
-      console.log(this.allItems);
+    });
+  }
+
+  refresh() {
+    this.itemsService.getItems().subscribe(items => {
+      this.allItems = items;
+      this.isDataAvailable = true;
     });
   }
 
@@ -31,18 +37,38 @@ export class ItemsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(this.allItems[0])
       const item: DialogData = result;
-      console.log("item", item);
-
-      // Update the DB
-
-      this.itemsService.addItem(item).subscribe(res => console.log(res));
-
-      // Update the table
-      // this.allItems.push(result);
-
+      this.itemsService.addItem(item).subscribe(res => {
+        this.refresh();
+      });
     });
+  }
+
+  openEditItemDialog(): void {
+    const dialogRef = this.dialog.open(EditItemDialog, {
+      width: '250px',
+      data: { name: '', buy_price: '', sell_price: '', quantity: '', category: '' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      const item: DialogData = result;
+      console.log(item);
+    });
+  }
+}
+
+@Component({
+  selector: 'edit-item-dialog',
+  templateUrl: 'edit-item-dialog.html',
+})
+export class EditItemDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<EditItemDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }
 

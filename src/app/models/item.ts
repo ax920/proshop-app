@@ -1,4 +1,4 @@
-export interface DialogData {
+export interface Item {
     id: number;
     name: string;
     buy_price: number;

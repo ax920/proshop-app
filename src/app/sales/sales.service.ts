@@ -11,7 +11,7 @@ export class SalesService {
   constructor(private http: HttpClient) { }
 
   getSales() {
-    return this.http.get<any[]>(`https://proshop-api.herokuapp.com/sales`);
-    // return this.http.get(`${environment.apiUrl}/sales`);
+    // return this.http.get<any[]>(`https://proshop-api.herokuapp.com/sales`);
+    return this.http.get<any[]>(`${environment.apiUrl}/sales`);
   }
 }

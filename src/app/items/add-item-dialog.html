@@ -1,6 +1,5 @@
 <h1 mat-dialog-title>Add Item</h1>
 <div mat-dialog-content>
-    <p>What's your favorite animal?</p>
     <mat-form-field>
         <mat-label>Item Name</mat-label>
         <input matInput [(ngModel)]="data.name">
@@ -23,7 +22,6 @@
     </mat-form-field>
 </div>
 <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">No Thanks</button>
-    <!-- <button mat-button (click)="save()">Ok</button> -->
-    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+    <button mat-flat-button (click)="onNoClick()" color="primary">Cancel</button>
+    <button mat-flat-button [mat-dialog-close]="data" color="accent" cdkFocusInitial>Ok</button>
 </div>
