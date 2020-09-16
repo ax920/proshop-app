@@ -6,16 +6,23 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { EditItemDialogComponent } from './edit-item-dialog/edit-item-dialog.component';
+import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  declarations: [ItemsComponent],
+  declarations: [ItemsComponent, EditItemDialogComponent],
   imports: [
     CommonModule,
     MatTableModule,
     MatButtonModule,
     MatIconModule,
     MatProgressBarModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    FormsModule,
+    MatDialogModule,
+    MatInputModule
   ],
   exports: [
     ItemsComponent

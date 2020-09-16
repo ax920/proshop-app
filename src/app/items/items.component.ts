@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ItemsService } from './items.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogData } from '../models/dialog-data';
+import { EditItemDialogComponent } from './edit-item-dialog/edit-item-dialog.component';
 
 @Component({
   selector: 'app-items',
@@ -45,7 +46,7 @@ export class ItemsComponent implements OnInit {
   }
 
   openEditItemDialog(): void {
-    const dialogRef = this.dialog.open(EditItemDialog, {
+    const dialogRef = this.dialog.open(EditItemDialogComponent, {
       width: '250px',
       data: { name: '', buy_price: '', sell_price: '', quantity: '', category: '' }
     });

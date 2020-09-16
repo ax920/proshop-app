@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Edit Item</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Item Name</mat-label>
+        <input matInput [(ngModel)]="data.name">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Buy Price</mat-label>
+        <input matInput [(ngModel)]="data.buy_price">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Sell Price</mat-label>
+        <input matInput [(ngModel)]="data.sell_price">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Quantity</mat-label>
+        <input matInput [(ngModel)]="data.quantity">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Category</mat-label> <!-- Should make into a dropdown menu -->
+        <input matInput [(ngModel)]="data.category">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-flat-button (click)="onNoClick()" color="primary">Cancel</button>
+    <button mat-flat-button [mat-dialog-close]="data" color="accent" cdkFocusInitial>Ok</button>
+</div>
