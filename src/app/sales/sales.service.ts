@@ -14,4 +14,8 @@ export class SalesService {
     // return this.http.get<any[]>(`https://proshop-api.herokuapp.com/sales`);
     return this.http.get<any[]>(`${environment.apiUrl}/sales`);
   }
+
+  purchaseItem(body: Object) {
+    return this.http.post(`${environment.apiUrl}/sales/purchase`, body);
+  }
 }

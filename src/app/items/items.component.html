@@ -44,12 +44,13 @@
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
             <mat-cell *matCellDef="let row">
-                <button mat-mini-fab color="accent" (click)="openEditItemDialog(row.id)" class="action-button"
+                <button mat-mini-fab color="accent" (click)="openEditItemDialog(row, row.id)" class="action-button"
                     aria-label="Edit Button">
                     <mat-icon>edit</mat-icon>
                 </button>
                 <div class="action-button-divider"></div>
-                <button mat-mini-fab color="accent" class="action-button" aria-label="Add To Cart Button">
+                <button mat-mini-fab color="accent" (click)="openPurchaseItemDialog(row)" class="action-button"
+                    aria-label="Add To Cart Button">
                     <mat-icon>add_shopping_cart</mat-icon>
                 </button>
             </mat-cell>

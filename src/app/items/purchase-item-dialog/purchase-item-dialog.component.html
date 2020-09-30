@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Purchase {{data.name}}</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Quantity</mat-label>
+        <input matInput [(ngModel)]="data.quantity">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Override Sell Price?</mat-label>
+        <input matInput [(ngModel)]="data.sell_price">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-flat-button (click)="onNoClick()" color="primary">Cancel</button>
+    <button mat-flat-button [mat-dialog-close]="data" color="accent" cdkFocusInitial>Ok</button>
+</div>

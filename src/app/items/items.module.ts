@@ -11,9 +11,11 @@ import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
+import { PurchaseItemDialogComponent } from './purchase-item-dialog/purchase-item-dialog.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
-  declarations: [ItemsComponent, EditItemDialogComponent],
+  declarations: [ItemsComponent, EditItemDialogComponent, PurchaseItemDialogComponent],
   imports: [
     CommonModule,
     MatTableModule,
@@ -24,7 +26,8 @@ import { MatSortModule } from '@angular/material/sort';
     FormsModule,
     MatDialogModule,
     MatInputModule,
-    MatSortModule
+    MatSortModule,
+    MatSnackBarModule
   ],
   exports: [
     ItemsComponent

@@ -29,4 +29,8 @@ export class ItemsService {
   updateItem(id: number, item: DialogData): Observable<any> {
     return this.http.put(`${environment.apiUrl}/items/${id}`, item);
   }
+
+  subtractQuantity(item: any) {
+    return this.http.post(`${environment.apiUrl}/items/quantity`, item)
+  }
 }

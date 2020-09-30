@@ -16,13 +16,10 @@ export class SalesComponent implements OnInit {
 
   ngOnInit(): void {
     this.salesService.getSales().subscribe(sales => {
-      console.log(sales)
       this.allSales = sales.sort(function (a, b) {
         return a.id - b.id || a.name.localeCompare(b.name);
       });
       this.isDataAvailable = true;
-      console.log(this.allSales);
     });
   }
-
 }
