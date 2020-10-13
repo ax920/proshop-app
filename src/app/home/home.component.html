@@ -5,6 +5,9 @@
             <a mat-list-item [routerLink]="'/items'"> Items </a>
             <!-- <a mat-list-item [routerLink]="'/inventory'"> Inventory </a> -->
             <a mat-list-item [routerLink]="'/sales'"> Sales </a>
+            <button mat-raised-button (click)="login()" class="login-button" color="Accent">Login</button>
+            <button mat-raised-button (click)="logout()" class="login-button" color="Accent">Logout</button>
+
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content [ngSwitch]="_router.url">

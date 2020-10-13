@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogData } from '../models/dialog-data';
-import { Item } from '../models/item';
+import { DialogData } from '../_models/dialog-data';
+import { Item } from '../_models/item';
 import { ItemsService } from './items.service';
 import { SalesService } from '../sales/sales.service';
 import { EditItemDialogComponent } from './edit-item-dialog/edit-item-dialog.component';
@@ -89,23 +89,33 @@ export class ItemsComponent implements OnInit {
       data:
       {
         name: item.name,
+        buy_price: item.buy_price,
         sell_price: item.sell_price,
         id: item.id,
+        category: item.category,
         quantity: 0,
       }
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
       if (result === undefined || +result.quantity <= 0) return;
-      const remainingQuantity = item.quantity - +result.quantity;
+      const qtyPurchased = +result.quantity;
+      const purchasedItem = {
+        id: result.id,
+        name: result.name,
+        buy_price: result.buy_price,
+        sell_price: result.sell_price,
+        category: result.category,
+        quantity: qtyPurchased,
+      };
+      console.log(purchasedItem)
+      const remainingQuantity = item.quantity - result.quantity;
       if (remainingQuantity >= 0) {
-        console.log(remainingQuantity)
-        const newItem: Item = result;
-        newItem.quantity = remainingQuantity;
-        this.itemsService.subtractQuantity(newItem).subscribe(res => {
-          console.log(res);
-          this.openSnackBar(`Purchased ${result.quantity} of "${newItem.name}"`, "");
-          this.salesService.purchaseItem(result).subscribe(res => {
+        const remainingItem: Item = { ...purchasedItem };
+        remainingItem.quantity = remainingQuantity;
+        this.itemsService.subtractQuantity(remainingItem).subscribe(res => {
+          console.log("quyantityasdf", purchasedItem.quantity)
+          this.openSnackBar(`Purchased ${purchasedItem.quantity} of "${purchasedItem.name}"`, "");
+          this.salesService.purchaseItem(purchasedItem).subscribe(res => {
             console.log(res);
           })
           this.refresh();

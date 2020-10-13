@@ -9,7 +9,7 @@ import { SalesService } from './sales.service'
 export class SalesComponent implements OnInit {
 
   allSales: any[];
-  displayedColumns: string[] = ['id', 'item_id', 'name', 'buy_price', 'sell_price', 'quantity', 'category', 'total'];
+  displayedColumns: string[] = ['id', 'item_id', 'name', 'buy_price', 'sell_price', 'quantity', 'category', 'total', 'date'];
   isDataAvailable: boolean = false;
 
   constructor(public salesService: SalesService) { }
@@ -21,5 +21,11 @@ export class SalesComponent implements OnInit {
       });
       this.isDataAvailable = true;
     });
+  }
+
+  formatDate(date) {
+    const newDate = new Date(date.replace(' ', 'T')).toLocaleDateString("en-US");
+    console.log(newDate)
+    return newDate;
   }
 }

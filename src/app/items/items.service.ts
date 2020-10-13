@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../environments/environment';
-import { DialogData } from '../models/dialog-data';
-import { Item } from '../models/item';
+import { DialogData } from '../_models/dialog-data';
+import { Item } from '../_models/item';
 import { Observable, of, from } from 'rxjs';
 
 @Injectable({
