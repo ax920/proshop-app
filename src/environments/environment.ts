@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:5000'
+  appUrl: 'http://localhost:4200',
+  apiUrl: 'http://localhost:5000',
+  orgUrl: 'https://dev-511043.okta.com/',
+  client_id: '0oa139ueimfTj1P1O4x7'
 };
 
 /*
